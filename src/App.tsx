@@ -2,6 +2,7 @@ import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import Home from './pages/Home';
+import Inicio from './pages/inicio'; 
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -34,7 +35,8 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 
 setupIonicReact();
-
+//crear la ruta de inicio para cuando se valide la informacion
+//aqui se crean todaaas las rutas 
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
@@ -42,10 +44,13 @@ const App: React.FC = () => (
         <Route exact path="/home">
           <Home />
         </Route>
+        <Route exact path="/inicio"> 
+          <Inicio />
+        </Route>
+        <Redirect exact from="/" to="/home" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-  
 );
 
 export default App;

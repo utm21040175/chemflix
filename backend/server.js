@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
 import cors from "cors"; 
-import {User} from '../../backend/models/User.js';
+import {User} from './models/User.js';
 
 const app = express();
 

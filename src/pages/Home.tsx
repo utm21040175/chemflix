@@ -1,6 +1,7 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput, 
   IonItem, IonLabel, IonButton, IonGrid, IonRow, IonCol } from '@ionic/react';
 import { useState } from 'react';
+import { useHistory } from 'react-router'; //para crear rutas:) 
 import axios from 'axios';
 import './Home.css';
 
@@ -11,7 +12,9 @@ const Home: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [isRegister, setIsRegister] = useState<boolean>(true);
+  const ruta = useHistory() //para la redireccion
 
+  
   // Función que maneja el envío del formulario
   const handleSubmit = () => {
     // Define el endpoint en función del modo
@@ -21,6 +24,7 @@ const Home: React.FC = () => {
       .then(response => {
         // Muestra una alerta en función del modo
         alert(isRegister ? 'Registro exitoso' : 'Inicio de sesión exitoso');
+        ruta.push('/inicio') //cuando se valide lo redirige
       })
       .catch(error => {
         // Muestra una alerta en caso de error

@@ -1,3 +1,6 @@
+import mongoose from "mongoose";
+import { Schema } from "mongoose";
+
 // Definición del esquema de usuario
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true }, // Nombre de usuario único y requerido
