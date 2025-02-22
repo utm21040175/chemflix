@@ -4,6 +4,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import bodyParser from "body-parser";
 import cors from "cors"; 
+import {User} from '../../backend/models/User.js';
 
 const app = express();
 
@@ -15,22 +16,6 @@ app.use(cors());
 mongoose.connect('mongodb://localhost:27017/chemflix', { useNewUrlParser: true, useUnifiedTopology: true }) //aqui me gustaria que me explicara un poco 
   .then(() => console.log('Conectado a MongoDB')) // Mensaje de éxito
   .catch(err => console.log('Error al conectar a MongoDB:', err)); // Mensaje de error
-
-// Definición del esquema de usuario
-const userSchema = new mongoose.Schema({
-  username: { type: String, required: true, unique: true }, // Nombre de usuario único y requerido
-  password: { type: String, required: true }, // Contraseña requerida
-});
-
-//Hash de contraseña antes de guardar un usuario
-userSchema.pre('save', async function (next) {
-  if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10); // Hash de la contraseña
-  }
-  next();
-});
-
-const User = mongoose.model('User', userSchema); // Modelo de usuario
 
 // Ruta de registro
 app.post('/register', async (req, res) => {

@@ -4,6 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import './Home.css';
 
+
 // Componente principal 
 const Home: React.FC = () => {
   // Definición de estados para username, password y modo (registro/inicio de sesión)
@@ -64,7 +65,7 @@ const Home: React.FC = () => {
           <IonRow>
             <IonCol>
               {/* Botón de envío del formulario */}
-              <IonButton expand="block" onClick={handleSubmit} href="/inicio">
+              <IonButton expand="block" onClick={handleSubmit}>
                 {isRegister ? 'Registrarse' : 'Iniciar Sesión'}
               </IonButton>
               {/* Botón para cambiar entre modos */}

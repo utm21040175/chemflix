@@ -42,12 +42,10 @@ const App: React.FC = () => (
         <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
+  
 );
 
 export default App;
