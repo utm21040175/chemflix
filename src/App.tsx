@@ -5,6 +5,8 @@ import Home from './pages/Home';
 import Inicio from './pages/inicio'; 
 import Terror from './pages/Terror';
 import Comedia from './pages/Comedia';
+import Amor from './pages/Amor';
+import Infantil from './pages/Infantil';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -52,7 +54,15 @@ const App: React.FC = () => (
         <Route exact path="/terror">
           <Terror/>
         </Route>
-        <Route exact path = "/comedia"> <Comedia/></Route>
+        <Route exact path="/amor">
+          <Amor/>
+        </Route>
+        <Route exact path = "/comedia">
+         <Comedia/>
+        </Route>
+        <Route exact path = '/infantil'>
+          <Infantil/>
+        </Route>
         <Redirect exact from="/" to="/home" />
       </IonRouterOutlet>
     </IonReactRouter>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonImg } from '@ionic/react';
 import api from '../api'
 
 const Infantil: React.FC = () => {
@@ -9,7 +9,7 @@ const Infantil: React.FC = () => {
         //llamar a la api con el codigo del genero
         api.get('/discover/movie', {
             params: {
-                with_genres: '',
+                with_genres: '16',
             }
         })
             .then(response => {
@@ -37,7 +37,8 @@ const Infantil: React.FC = () => {
                             <IonCardHeader>
                                 <IonCardTitle>{movie.title}</IonCardTitle>
                             </IonCardHeader>
-                            <IonCardContent>
+                            <IonCardContent>{/*AÑADIR LAS IMAGENES DE LAS PELICULAS*/}
+                                <IonImg style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
                                 {movie.overview}
                             </IonCardContent>
                         </IonCard>
@@ -49,3 +50,5 @@ const Infantil: React.FC = () => {
         </IonPage>
     );
 }
+
+export default Infantil;

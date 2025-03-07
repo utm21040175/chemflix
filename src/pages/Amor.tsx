@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent ,IonImg} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonImg } from '@ionic/react';
 import api from '../api'; // Importa la instancia configurada de axios
 
-const Terror: React.FC = () => {
+const Amor: React.FC = () => {
   const [movies, setMovies] = useState<any[]>([]);
 
   useEffect(() => {
     // Llama a la API para obtener los datos de películas de terror
     api.get('/discover/movie', {
       params: {
-        with_genres: '27', // El ID para el género para Terror en TMDb es 27
+        with_genres: '10749', // El ID para el género para Terror en TMDb es 27
       },
     })
       .then(response => {
@@ -26,7 +26,7 @@ const Terror: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Películas de Terror</IonTitle>
+          <IonTitle>Películas de Amor - Romance</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -38,17 +38,17 @@ const Terror: React.FC = () => {
                 <IonCardTitle>{movie.title}</IonCardTitle>
               </IonCardHeader>
               <IonCardContent>{/*AÑADIR LAS IMAGENES DE LAS PELICULAS*/}
-                <IonImg style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
-                 {movie.overview}
-              </IonCardContent> 
+                    <IonImg style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
+                    {movie.overview}
+               </IonCardContent>
             </IonCard>
           ))
         ) : (
-          <p>No se encontraron películas de terror.</p>
+          <p>No se encontraron películas de Amor.</p>
         )}
       </IonContent>
     </IonPage>
   ); 
 };
 
-export default Terror;
+export default Amor;

@@ -1,7 +1,7 @@
 import api from "../api";
 
 import React, {useEffect, useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent , IonImg} from '@ionic/react';
 
 const Comedia : React.FC = () => {
     const [movies, setMovies] = useState<any[]>([])
@@ -36,8 +36,9 @@ const Comedia : React.FC = () => {
               <IonCardHeader>
                 <IonCardTitle>{movie.title}</IonCardTitle>
               </IonCardHeader>
-              <IonCardContent>
-                {movie.overview}
+              <IonCardContent>{/*AÑADIR LAS IMAGENES DE LAS PELICULAS*/}
+                <IonImg style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
+                  {movie.overview}
               </IonCardContent>
             </IonCard>
           ))
