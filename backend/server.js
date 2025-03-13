@@ -25,6 +25,7 @@ app.post('/register', async (req, res) => {
     await user.save(); // Guardando el usuario en la base de datos
     res.status(201).send('Usuario registrado'); // Respuesta de éxito
   } catch (error) {
+    console.log(error)
     res.status(400).send(error.message); // Respuesta de error
   }
 });

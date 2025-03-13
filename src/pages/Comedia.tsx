@@ -1,9 +1,10 @@
 import api from "../api";
-
+import { useHistory } from 'react-router-dom';
 import React, {useEffect, useState} from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent , IonImg} from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle,IonMenu,IonList,IonButtons, IonButton, IonMenuButton,  IonItem, IonToolbar, IonCard, IonCardHeader, IonCardTitle, IonCardContent , IonImg} from '@ionic/react';
 
 const Comedia : React.FC = () => {
+    const history = useHistory();
     const [movies, setMovies] = useState<any[]>([])
 
     useEffect(() => {
@@ -21,11 +22,43 @@ const Comedia : React.FC = () => {
             console.error('ERROR', error)
         });
     }, []) //el arreglo vacio es para que se ejecute una sola ves, pero me podria explicar como funciona? porfis 
+
+    const handleMenuClick = (path: string) => {
+      history.push(path);
+    };
+  
  return (
-    <IonPage>
+  <>
+    <IonMenu side="start" menuId="first" contentId="main">
+        <IonHeader>
+          <IonToolbar>
+            <IonTitle>Menú</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <IonList>
+            <IonItem button onClick={() => handleMenuClick('/amor')}>Amor</IonItem>
+            <IonItem button onClick={() => handleMenuClick('/comedia')}>Comedia</IonItem>
+            <IonItem button onClick={() => handleMenuClick('/terror')}>Terror</IonItem>
+            <IonItem button onClick={() => handleMenuClick('/infantil')}>Infantil</IonItem>
+          </IonList>
+        </IonContent>
+    </IonMenu>
+    <IonPage id="main">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Películas de Comedia</IonTitle>
+            <IonButtons slot="start">
+              <IonMenuButton />
+            </IonButtons>
+            <IonTitle>Peliculas de comedia.</IonTitle>
+        </IonToolbar>
+        <IonToolbar>
+            <IonButtons slot="secondary">
+              <IonButton onClick={() => handleMenuClick('/amor')}>Amor</IonButton>
+              <IonButton onClick={() => handleMenuClick('/comedia')}>Comedia</IonButton>
+              <IonButton onClick={() => handleMenuClick('/terror')}>Terror</IonButton>
+              <IonButton onClick={() => handleMenuClick('/infantil')}>Infantil</IonButton>
+            </IonButtons>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -47,6 +80,7 @@ const Comedia : React.FC = () => {
         )}
       </IonContent>
     </IonPage>
+    </>
   ); 
 };
 
