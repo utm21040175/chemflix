@@ -1,0 +1,22 @@
+#content{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#grid{
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+#boton{
+    background: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+#boton:hover{
+    background: gold;
+}

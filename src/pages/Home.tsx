@@ -3,7 +3,7 @@ import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonInput,
 import { useState } from 'react';
 import { useHistory } from 'react-router'; //para crear rutas:) 
 import axios from 'axios';
-import './Home.css';
+import "./Home.css";
 
 
 // Componente principal 
@@ -40,14 +40,14 @@ const Home: React.FC = () => {
           <IonTitle>{isRegister ? 'REGISTRARSE' : 'INICIAR SESIÓN'}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent id='content'fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
             {/* Título grande para versión compacta */}
             <IonTitle size="large">{isRegister ? 'Registrarse' : 'Iniciar Sesión'}</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonGrid>
+        <IonGrid id='grid'>
           <IonRow>
             <IonCol>
               <IonItem>
@@ -69,11 +69,11 @@ const Home: React.FC = () => {
           <IonRow>
             <IonCol>
               {/* Botón de envío del formulario */}
-              <IonButton expand="block" onClick={handleSubmit}>
+              <IonButton color={'warning'} expand="block" onClick={handleSubmit}>
                 {isRegister ? 'Registrarse' : 'Iniciar Sesión'}
               </IonButton>
               {/* Botón para cambiar entre modos */}
-              <IonButton expand="block" fill="clear" onClick={() => setIsRegister(!isRegister)}>
+              <IonButton color= {'warning'} expand="block" fill="clear" onClick={() => setIsRegister(!isRegister)}>
                 {isRegister ? '¿Ya tienes una cuenta? Iniciar Sesión' : '¿No tienes una cuenta? Registrarse'}
               </IonButton>
             </IonCol>

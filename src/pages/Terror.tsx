@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonMenu,IonList, IonItem, IonCard, IonCardHeader, IonCardTitle, IonCardContent ,IonImg, IonButtons, IonButton, IonMenuButton} from '@ionic/react';
 import api from '../api'; // Importa la instancia configurada de axios
+import "./Terror.css"
 
 const Terror: React.FC = () => {
   const history = useHistory();
@@ -35,7 +36,7 @@ const Terror: React.FC = () => {
               <IonTitle>Menú</IonTitle>
             </IonToolbar>
           </IonHeader>
-          <IonContent>
+          <IonContent id='content'>
             <IonList>
               <IonItem button onClick={() => handleMenuClick('/amor')}>Amor</IonItem>
               <IonItem button onClick={() => handleMenuClick('/comedia')}>Comedia</IonItem>
@@ -65,12 +66,12 @@ const Terror: React.FC = () => {
           {/* Mapea el estado movies para crear una tarjeta para cada película */}
           {movies.length > 0 ? (
             movies.map((movie, index) => (
-              <IonCard key={index}>
+              <IonCard id='card' key={index}>
                 <IonCardHeader>
-                  <IonCardTitle>{movie.title}</IonCardTitle>
+                  <IonCardTitle id='tituloCard'>{movie.title}</IonCardTitle>
                 </IonCardHeader>
-                <IonCardContent>{/*AÑADIR LAS IMAGENES DE LAS PELICULAS*/}
-                  <IonImg style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
+                <IonCardContent id='cardCont'>{/*AÑADIR LAS IMAGENES DE LAS PELICULAS*/}
+                  <IonImg id='img' style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
                   {movie.overview}
                 </IonCardContent> 
               </IonCard>
@@ -78,6 +79,7 @@ const Terror: React.FC = () => {
           ) : (
             <p>No se encontraron películas de terror.</p>
           )}
+          
         </IonContent>
       </IonPage>
     </>
