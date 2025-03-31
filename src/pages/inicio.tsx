@@ -1,6 +1,6 @@
 // src/pages/Inicio.js
 import React, { useEffect, useState } from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle,IonImg, IonToolbar, IonButtons, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonMenu, IonList, IonItem, IonMenuButton } from '@ionic/react';
+import { IonContent, IonHeader, IonCol, IonPage,IonRow, IonTitle,IonImg, IonToolbar, IonButtons, IonButton, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonMenu, IonList, IonItem, IonMenuButton, IonGrid } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import api from '../api'; // Importa la instancia configurada de axios
 
@@ -43,6 +43,7 @@ const Inicio: React.FC = () => {
             <IonItem button onClick={() => handleMenuClick('/terror')}>Terror</IonItem>
             <IonItem button onClick={() => handleMenuClick('/infantil')}>Infantil</IonItem>
           </IonList>
+          <IonButton>Cerrar sesion</IonButton>
         </IonContent>
       </IonMenu>
 
@@ -65,22 +66,32 @@ const Inicio: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <IonContent fullscreen>
-          {movies.length > 0 ? (
-            movies.map((movie, index) => (
-              <IonCard key={index}>
-                <IonCardHeader>
-                  <IonCardTitle>{movie.title}</IonCardTitle>
-                </IonCardHeader>
-                <IonCardContent>
-                  <IonImg style={{ width: '150px', height: 'auto' }} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt={movie.title} />
-                  {movie.overview}
-                </IonCardContent>
-              </IonCard>
-            ))
-          ) : (
-            <p>No se encontraron películas.</p>
-          )}
-        </IonContent>
+            <IonGrid>
+              <IonRow>
+                {movies.length > 0 ? (
+                  movies.map((movie, index) => (
+                    <IonCol key={index} size="2"> {/* Cada película ocupa 3 columnas en una fila */}
+                      <IonCard>
+                        <IonCardHeader>
+                          <IonCardTitle>{movie.title}</IonCardTitle>
+                        </IonCardHeader>
+                        <IonCardContent>
+                          <IonImg
+                            style={{ width: '100%', height: 'auto' }}
+                            src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                            alt={movie.title}
+                          />{movie.overview}
+                        </IonCardContent>
+                      </IonCard>
+                    </IonCol>
+                  ))
+                ) : (
+                  <p>No se encontraron películas.</p>
+                )}
+              </IonRow>
+            </IonGrid>
+          </IonContent>
+
       </IonPage>
     </>
   );

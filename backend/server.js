@@ -20,24 +20,35 @@ mongoose.connect('mongodb://localhost:27017/chemflix', { useNewUrlParser: true, 
 // Ruta de registro
 app.post('/register', async (req, res) => {
   try {
-    const { username, password } = req.body; // Obtener username y password 
-    const user = new User({ username, password }); // Creando un nuevo usuario
-    await user.save(); // Guardando el usuario en la base de datos
-    res.status(201).send('Usuario registrado'); // Respuesta de éxito
+    const { username, password } = req.body;
+
+    // Cifrar la contraseña antes de guardarla
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ username, password: hashedPassword });
+    await user.save();
+
+    res.status(201).send({ success: true, message: 'Usuario registrado' });
   } catch (error) {
-    console.log(error)
-    res.status(400).send(error.message); // Respuesta de error
+    console.log(error);
+    res.status(400).send({ success: false, message: error.message });
   }
 });
+
 
 // Ruta de inicio de sesión
 app.post('/login', async (req, res) => {
   try {
     const { username, password } = req.body; //Obtener username y password 
     const user = await User.findOne({ username }); // Buscar el usuario en la base de datos
-    if (!user || !(await bcrypt.compare(password, user.password))) { // Verificar credenciales
-      return res.status(400).send('Credenciales inválidas'); // Respuesta de error
+    if (!user) {
+      return res.status(400).send({ success: false, message: 'El usuario no existe' });
     }
+    
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(400).send({ success: false, message: 'Contraseña incorrecta' });
+    }
+    
     const token = jwt.sign({ userId: user._id }, 'tu_secreto_jwt'); // Generando token JWT, cuando consultamos se agrego, 
     // pero podria esxplicarme un poco como funciona? 
     res.send({ token }); // Enviando token como respuesta

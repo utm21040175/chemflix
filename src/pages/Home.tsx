@@ -24,7 +24,7 @@ const Home: React.FC = () => {
       .then(response => {
         // Muestra una alerta en función del modo
         alert(isRegister ? 'Registro exitoso' : 'Inicio de sesión exitoso');
-        ruta.push('/inicio') //cuando se valide lo redirige
+        ruta.push('/inicio') //cuaando se valide lo redirige
       })
       .catch(error => {
         // Muestra una alerta en caso de error
