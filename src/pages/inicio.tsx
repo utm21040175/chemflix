@@ -68,6 +68,7 @@ const Inicio: React.FC = () => {
         </IonHeader>
         <IonContent>
           <IonItem href='/inicio'>Volver al inicio. 🏠</IonItem>
+          <IonItem href='perfil'>Perfil de usuario.</IonItem>
           <IonList>
             <IonItem button onClick={() => handleMenuClick('/amor')}>Amor</IonItem>
             <IonItem button onClick={() => handleMenuClick('/comedia')}>Comedia</IonItem>

@@ -7,7 +7,7 @@ import Terror from './pages/Terror';
 import Comedia from './pages/Comedia';
 import Amor from './pages/Amor';
 import Infantil from './pages/Infantil';
-
+import Perfil from './pages/Perfil';
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -62,6 +62,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path = '/infantil'>
           <Infantil/>
+        </Route>
+        <Route exact path = '/perfil'>
+          <Perfil />
         </Route>
         <Redirect exact from="/" to="/home" />
       </IonRouterOutlet>

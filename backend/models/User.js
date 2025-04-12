@@ -1,9 +1,12 @@
-import mongoose from "mongoose";
-import { Schema } from "mongoose";
+import mongoose , {Schema}from "mongoose";
 import bcrypt from "bcrypt"
+
 // Definición del esquema de usuario
 const userSchema = new mongoose.Schema({
   username: { type: String, required: true, unique: true }, // Nombre de usuario único y requerido
+  email: { type: String, required: true, unique: true },
+  phone: { type: String },
+  description: { type: String },
   password: { type: String, required: true }, // Contraseña requerida
 });
 
@@ -16,3 +19,4 @@ userSchema.pre('save', async function (next) {
 });
 
 export const User = mongoose.model('User', userSchema); // Modelo de usuario
+

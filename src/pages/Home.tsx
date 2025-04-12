@@ -28,7 +28,7 @@ const Home: React.FC = () => {
       })
       .catch(error => {
         // Muestra una alerta en caso de error
-        alert('Error:');
+        alert('Error:'+ error);
       });
   };
 
