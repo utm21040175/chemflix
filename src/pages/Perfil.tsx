@@ -52,7 +52,7 @@ const PerfilMuestra: React.FC = () => {
                                 icon={personCircleOutline}
                                 style={{ fontSize: '150px', color: '#666', margin: '0 auto' }} // Tamaño y color del ícono
                             />
-                            <h2>Leslie Arjona</h2>
+                            <h2>Laisha Pamela Hernandez</h2>
                             <p>Correo: utm21040175@utma.edu.mx</p>
                             <p>Contraseña: ******</p>
                         </IonCol>
